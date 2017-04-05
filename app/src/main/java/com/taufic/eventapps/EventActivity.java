@@ -1,5 +1,6 @@
 package com.taufic.eventapps;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -19,7 +20,7 @@ import android.widget.TextView;
  * Created by taufic on 4/5/2017.
  */
 
-public class EventActivity extends AppCompatActivity {
+public class EventActivity extends AppCompatActivity implements EventOne.OnFragmentInteractionListener {
     private Toolbar mToolbar;
     private MenuItem mSearchAction;
     private boolean isSearchOpened = false;
@@ -146,6 +147,17 @@ public class EventActivity extends AppCompatActivity {
 
     public void back(View view) {
         finish();
+    }
+
+    @Override
+    public void onFragmentInteraction(int[] photo, int[] lng, int[] lat) {
+        System.out.println(photo[0]);
+        Bundle bundle = new Bundle();
+        bundle.putIntArray("Photos", photo);
+        bundle.putIntArray("Lng", lng);
+        bundle.putIntArray("Lat", lat);
+        Fragment fr = new Fragment();
+        fr.setArguments(bundle);
     }
 
 }

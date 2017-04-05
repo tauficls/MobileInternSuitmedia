@@ -15,6 +15,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.taufic.eventapps.Adapter.PhotoAdapter;
 
 import java.util.ArrayList;
@@ -23,7 +30,7 @@ import java.util.ArrayList;
  * Created by taufic on 4/5/2017.
  */
 
-public class EventTwo extends Fragment{
+public class EventTwo extends Fragment implements OnMapReadyCallback {
 
     private View eventTwo;
     private Context mContext;
@@ -32,7 +39,12 @@ public class EventTwo extends Fragment{
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView.Adapter mAdapter;
+    private GoogleMap mMap;
+    private MapView mapView;
 
+    public EventTwo() {
+
+    }
     // Initialize a new BroadcastReceiver instance
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -43,14 +55,21 @@ public class EventTwo extends Fragment{
         }
     };
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         eventTwo = inflater.inflate(R.layout.mapview, container, false);
-        Bundle bundle = this.getArguments();
-//        if(bundle != null) {
-//            int[] pics = bundle.getIntArray("Photos");
-//        }
+        Bundle bundle = getArguments();
+        if(bundle != null) {
+            int[] pics = bundle.getIntArray("Photos");
+            int[] longitude = bundle.getIntArray("Lng");
+            int[] latitude = bundle.getIntArray("Lat");
+        }
         mContext = eventTwo.getContext();
 
         // Register the Local Broadcast
@@ -85,8 +104,33 @@ public class EventTwo extends Fragment{
         // Set an adapter for RecyclerView
         mRecyclerView.setAdapter(mAdapter);
 
+
+
+
         return eventTwo;
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mapView = (MapView) eventTwo.findViewById(R.id.map);
+        if(mapView != null) {
+            mapView.onCreate(null);
+            mapView.onResume();
+            mapView.getMapAsync(this);
+        }
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        MapsInitializer.initialize(this.getActivity());
+        mMap = googleMap;
+        mMap.setMapType(mMap.MAP_TYPE_NORMAL);
+
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
 
 }

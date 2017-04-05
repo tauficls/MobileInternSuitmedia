@@ -2,4 +2,5 @@
     <string name="app_name">EventApps</string>
     <string name="name">none</string>
     <string name="masukGambar">Sertakan gambar profil Anda \n untuk melengkapi profil</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

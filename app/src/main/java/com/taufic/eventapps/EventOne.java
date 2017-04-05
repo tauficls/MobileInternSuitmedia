@@ -1,6 +1,7 @@
 package com.taufic.eventapps;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,9 +24,13 @@ public class EventOne extends Fragment {
     private ListEventAdapter listEventAdapter;
     private ArrayList<EventItem> list_events;
     private EventItem items;
-
+    private OnFragmentInteractionListener mListener;
 
     View eventOne;
+
+    public EventOne() {
+
+    }
 
     @Nullable
     @Override
@@ -94,12 +99,35 @@ public class EventOne extends Fragment {
                 getActivity().finish();
             }
         });
-        Fragment fr = new Fragment();
-        Bundle bundle = new Bundle();
-        bundle.putIntArray("Photos", pics);
-        fr.setArguments(bundle);
-
+        sendData(pics, longitude, latitude);
         return eventOne;
+    }
+    public void sendData(int[] photo, int[] lng, int[] lat) {
+        System.out.println(mListener);
+        if (mListener != null) {
+            mListener.onFragmentInteraction(photo, lng, lat);
+        }
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new ClassCastException(context.toString() + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(int[] photo, int[] lng, int[] lat);
     }
 
 }
