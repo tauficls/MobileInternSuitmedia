@@ -8,40 +8,40 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.taufic.eventapps.ChooseAs">
+    tools:context="com.taufic.eventapps.ChooseAs"
+    android:background="@drawable/bg_validation">
 
     <TextView
         android:id="@+id/nama"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="nama                      : "/>
-    <TextView
-        android:id="@+id/name"
-        android:layout_toRightOf="@id/nama"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/name"/>
+        android:text="nama              : "
+        android:textSize="20dp"
+        android:textColor="@color/colorWhite"/>
 
     <Button
         android:layout_marginTop="20dp"
+        android:textColor="@color/colorWhite"
         android:id="@+id/buttonGuest"
         android:layout_width="200sp"
-        android:layout_height="wrap_content"
+        android:layout_height="50sp"
         android:text="pilih Guest"
         android:layout_below="@+id/buttonEvent"
         android:layout_alignLeft="@+id/buttonEvent"
         android:layout_alignStart="@+id/buttonEvent"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:background="@drawable/btn_signup_normal"/>
 
     <Button
         android:id="@+id/buttonEvent"
+        android:textColor="@color/colorWhite"
         android:layout_width="200sp"
-        android:layout_height="wrap_content"
+        android:layout_height="50sp"
         android:text="pilih Event"
         android:layout_marginTop="38dp"
         android:layout_below="@+id/nama"
         android:layout_centerHorizontal="true"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:background="@drawable/btn_signup_normal"/>
 </RelativeLayout>

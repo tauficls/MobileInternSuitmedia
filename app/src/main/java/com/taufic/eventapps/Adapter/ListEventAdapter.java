@@ -44,9 +44,12 @@ public class ListEventAdapter extends ArrayAdapter<EventItem> {
             TextView namaEvent = (TextView) view.findViewById(R.id.namaEvent);
             TextView tanggalEvent = (TextView) view.findViewById(R.id.tanggalEvent);
             ImageView imageEvent= (ImageView) view.findViewById(R.id.imageEvent);
+            TextView description = (TextView) view.findViewById(R.id.description);
+
             namaEvent.setText(i.getNama());
             tanggalEvent.setText(i.getTanggal());
             imageEvent.setImageResource(i.getImage());
+            description.setText(i.getDescription());
         }
         return view;
     }

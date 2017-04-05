@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.taufic.eventapps">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -18,9 +19,10 @@
         </activity>
         <activity android:name=".ChooseAs" />
         <activity android:name=".Guest"
-            android:label="Guest"/>
-        <activity android:name=".Event"
-            android:label="Event" />
+            android:theme="@style/Apptheme2"
+            android:label="Guest"
+            />
+        <activity android:name=".EventActivity" />
     </application>
 
 </manifest>
