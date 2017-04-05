@@ -52,11 +52,9 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
     }
     @Override
     public void onBindViewHolder(ViewHolder holder, int position){
-        // Get the current color from the data set
         final int photo = mDataSet.get(position);
 
-
-//        // Set the ImageView background color
+        // Set the ImageView
         holder.mImageView.setImageResource(photo);
 
 
@@ -68,7 +66,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
                 Intent intent = new Intent("BROADCAST_PHOTO");
                 intent.putExtra("PHOTOS",photo);
 
-                // Broadcast the selected color value
+                // Broadcast the selected photos value
                 LocalBroadcastManager.getInstance(mContext).sendBroadcast(intent);
             }
         });
