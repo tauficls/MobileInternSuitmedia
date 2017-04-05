@@ -43,7 +43,7 @@ public class ListEventAdapter extends ArrayAdapter<EventItem> {
         if (i != null) {
             TextView namaEvent = (TextView) view.findViewById(R.id.namaEvent);
             TextView tanggalEvent = (TextView) view.findViewById(R.id.tanggalEvent);
-            ImageView imageEvent= (ImageView) view.findViewById(R.id.imageEvent);
+            ImageView imageEvent = (ImageView) view.findViewById(R.id.imageEvent);
             TextView description = (TextView) view.findViewById(R.id.description);
 
             namaEvent.setText(i.getNama());
