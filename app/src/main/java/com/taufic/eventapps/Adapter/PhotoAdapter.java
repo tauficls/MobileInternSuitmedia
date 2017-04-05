@@ -37,7 +37,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.ViewHolder> 
             super(v);
             // Get the widget reference from the custom layout
             mCardView = (CardView) v.findViewById(R.id.card_view);
-            mTextView = (TextView) v.findViewById(R.id.tv);
             mImageView = (ImageView) v.findViewById(R.id.EventImage);
         }
     }
